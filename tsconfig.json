@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-rga-paginaion": [
+        "dist/ng-rga-paginaion"
+      ],
+      "ng-rga-paginaion/*": [
+        "dist/ng-rga-paginaion/*"
+      ]
+    }
   }
 }

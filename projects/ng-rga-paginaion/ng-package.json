@@ -1,0 +1,7 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ng-rga-paginaion",
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  }
+}

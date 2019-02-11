@@ -1,0 +1,13 @@
+{
+  "name": "ng-rga-paginaion",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name" : "Raúl Gónzalez Acosta",
+    "email" : "gonzalezraul690@gmail.com"
+  },
+  "peerDependencies": {
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0"
+  }
+}
