@@ -1,27 +1,180 @@
 # NgRgaPaginaion
+
+A package in angular to integrate with API
  
-[GUIDE](https://blog.angularindepth.com/angular-workspace-no-application-for-you-4b451afcc2ba)
+## Getting Started
 
-## Development server
+You need `Angular CLI` greater or equal to `v7`
+if yo don't have it you can check [here](https://angular.io/cli/update) or [here](https://update.angular.io/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Installing
 
-## Code scaffolding
+```
+npm i ng-rga-paginaion --save
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Usage
 
-## Build
+In[*app.module.ts*](https://gthub.com/rulorules99/ng-rga-paginaion/blob/master/projects/ng-paginaion/src/app/app.module.ts): add
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Import the module:
+```javascript
+import { NgRgaPaginaionModule } from 'ng-rga-paginaion';
+```
+Add `NgRgaPaginaionModule` to NgModule imports:
+```javascript
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    ...
+    NgRgaPaginaionModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+In our [*component*](https://github.com/rulorules99/ng-rga-paginaion/blob/master/projects/ng-paginaion/src/app/components-examples/ex-normal-table/ex-normal-table.component.ts) class add the next:
+```javascript
+@Component({
+  ...
+})
+export class Example  extends Pagination
+```
+In consturctor add:
+```javascript
+constructor() { super(); }
+```
+You must add a service function to called every time when user select between pages
+and name function as `get` with params like `params: string = ''`:
+```javascript
+public get(params: string = ''): void {
+    this.http.get<any>(`https://reqres.in/api/users${params}`).toPromise().then(response);
+}
+```
+When api request response you need to set the meta pagination data from the API:
+the meta must be a `RgaMeta` type:
+```javascript
+public get(params: string = ''): void {
+    (...).then(response => {
+      const data = response.data;
+      const meta: RgaMeta = {
+        count: response.data.length,
+        currentPage: response.page,
+        perPage: response.per_page,
+        total: response.total,
+        totalPages: response.total_pages,
+      };
+      this.data = data;
+      this.setMeta(meta);
+    });
+}
+```
+If you want call a list service when components init add this in `ngOnInit` angular function:
+```javascript
+ngOnInit() {
+    this.get(this.buildFilters());
+}
+```
 
-## Running unit tests
+#### HTML [component](https://github.com/rulorules99/ng-rga-paginaion/blob/master/projects/ng-paginaion/src/app/components-examples/ex-normal-table/ex-normal-table.component.html)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+For search input add:
+```html
+<lb-rga-table-searchbar (inputKeyUp)="filterTableData($event)"> </lb-rga-table-searchbar>
+```
 
-## Running end-to-end tests
+For pagination actions add:
+```html
+ <lb-rga-table-pagination
+          [meta]="meta"
+          (nextPage)="nextPage()"
+          (prevPage)="prevPage()"
+          (lastPage)="lastPage()"
+          (firstPage)="firstPage()"
+          (goToPage)="goToPage($event)"
+          *ngIf="meta.totalPages > 1">
+  </lb-rga-table-pagination>
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+For body the functions `onSortData` and `getSortIcon` must get as a param the name of field that API required:
+```html
+<table>
+    <tr>
+      <th (click)="onSortData('field_one')"> <mat-icon [svgIcon]="getSortIcon('field_one')"></mat-icon>Id</th>
+      <th (click)="onSortData('field_two')"> <mat-icon [svgIcon]="getSortIcon('field_two')"></mat-icon>Avatar</th>
+    </tr>
+    <tr *ngFor="let row of data">
+      <td>{{row.field_one}}</td>
+      <td>{{row.field_two}}</td>
+    </tr>
+  </table>
+```
+## Final examples
 
-## Further help
+### Example.component.ts
+Finally in our component we have te next:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```javascript
+import { Component, OnInit } from '@angular/core';
+import { Pagination, RgaMeta } from 'ng-rga-paginaion';
+
+@Component({
+  selector: 'app-example',
+  templateUrl: './example.component.html'
+})
+export class Example  extends Pagination implements OnInit {
+  public data: any[] = [];
+  constructor() { super('customGet'); }
+
+  ngOnInit() {
+    this.get(this.buildFilters());
+  }
+
+  public get(params: string = '') {
+    this.http.get<any>(`https://reqres.in/api/users${params}`)
+    .toPromise()
+    .then(response => {
+      const data = response.data;
+      const meta: RgaMeta = {
+        count: response.data.length,
+        currentPage: response.page,
+        perPage: response.per_page,
+        total: response.total,
+        totalPages: response.total_pages,
+      };
+      this.data = data;
+      this.setMeta(meta);
+    });
+  }
+}
+```
+
+### Example.component.html
+Finally in our html we have te next:
+```html
+<lb-rga-table-searchbar (inputKeyUp)="filterTableData($event)"> </lb-rga-table-searchbar>
+
+<table>
+  <tr>
+    <th (click)="onSortData('field_one')"> <mat-icon [svgIcon]="getSortIcon('field_one')"></mat-icon>Id</th>
+    <th (click)="onSortData('field_two')"> <mat-icon [svgIcon]="getSortIcon('field_two')"></mat-icon>Avatar</th>
+  </tr>
+  <tr *ngFor="let row of data">
+    <td>{{row.field_one}}</td>
+    <td>{{row.field_two}}</td>
+  </tr>
+</table>
+  
+<lb-rga-table-pagination
+         [meta]="meta"
+         (nextPage)="nextPage()"
+         (prevPage)="prevPage()"
+         (lastPage)="lastPage()"
+         (firstPage)="firstPage()"
+         (goToPage)="goToPage($event)"
+         *ngIf="meta.totalPages > 1">
+</lb-rga-table-pagination>
+```
