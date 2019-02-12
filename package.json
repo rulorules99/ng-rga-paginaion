@@ -23,7 +23,7 @@
     "serve_app": "ng serve ng-paginaion",
     "npm_pack": "cd dist/ng-rga-paginaion && npm pack",
     "package": "npm run build_lib && npm run npm_pack",
-    "publish_package": "npm publish ./dist/ng-rga-paginaion/ng-rga-paginaion-0.0.1.tgz"
+    "publish_package": "npm run package && npm publish ./dist/ng-rga-paginaion/ng-rga-paginaion-0.0.2.tgz"
   },
   "private": true,
   "dependencies": {
