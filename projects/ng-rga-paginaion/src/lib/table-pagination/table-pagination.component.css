@@ -1,0 +1,47 @@
+.Pagination-label {
+    margin: 0 8px;
+}
+
+.Pagination .mat-button {
+    color: #002F87;
+    border: 1px solid #DDD;
+    background-color: #E5E5E5;
+    line-height: 26px;
+    min-width: 28px;
+    width: 28px;
+    padding: 0;
+    margin-right: 4px;
+    border-radius: 0;
+}
+
+.Pagination .mat-button[disabled] {
+    background-color: #FFF;
+    color: #AAAEB3;
+}
+
+.Pagination .mat-button {
+    min-height: 28px;
+    line-height: 1;
+}
+
+.Pagination .mat-icon {
+    height: 14px;
+    width: 14px;
+}
+
+.Pagination .mat-input-element {
+    text-align: center;
+    border-radius: 0;
+    border-color: #DDD;
+    height: 28px;
+    width: 28px;
+    padding: 0;
+}
+
+.Pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+

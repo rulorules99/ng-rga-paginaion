@@ -1,0 +1,52 @@
+<div style="width: 400px;">
+  <label>With mat-table component angular Material</label>
+  <lb-rga-table-searchbar (inputKeyUp)="filterTableData($event)"> </lb-rga-table-searchbar>
+
+  <!-- data table -->
+  <table class="mat-elevation-z8" mat-table matSort [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef (click)="onSortData('id')">
+        <div class="mat-header-cell-wrapper"> ID <mat-icon [svgIcon]="getSortIcon('id')"></mat-icon> </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="avatar">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef (click)="onSortData('avatar')">
+        <div class="mat-header-cell-wrapper"> Avatar <mat-icon [svgIcon]="getSortIcon('avatar')"></mat-icon> </div>
+      </th>
+      <td mat-cell *matCellDef="let element"> <img [src]="element.avatar" alt="Avatar" class="avatar"> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="first_name">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef (click)="onSortData('first_name')">
+        <div class="mat-header-cell-wrapper"> First name <mat-icon [svgIcon]="getSortIcon('first_name')"></mat-icon> </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="last_name">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef (click)="onSortData('last_name')">
+        <div class="mat-header-cell-wrapper"> Last name <mat-icon [svgIcon]="getSortIcon('last_name')"></mat-icon> </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [ngClass]="{ 'display-none': !responseIsComplete}">
+    </tr>
+  </table>
+
+  <!-- table pagination -->
+  <lb-rga-table-pagination
+          [meta]="meta"
+          (nextPage)="nextPage()"
+          (prevPage)="prevPage()"
+          (lastPage)="lastPage()"
+          (firstPage)="firstPage()"
+          (goToPage)="goToPage($event)"
+          *ngIf="meta.totalPages > 1">
+  </lb-rga-table-pagination>
+</div>

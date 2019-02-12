@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooComponent } from './foo.component';
+import { ExMatTableComponent } from './ex-mat-table.component';
 
-describe('FooComponent', () => {
-  let component: FooComponent;
-  let fixture: ComponentFixture<FooComponent>;
+describe('ExMatTableComponent', () => {
+  let component: ExMatTableComponent;
+  let fixture: ComponentFixture<ExMatTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooComponent ]
+      declarations: [ ExMatTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooComponent);
+    fixture = TestBed.createComponent(ExMatTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,9 +2,14 @@
   "name": "ng-rga-paginaion",
   "version": "0.0.0",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rulorules99/ng-rga-paginaion"
+  },
+  "homepage": "https://medium.com/@palmer_todd/the-angular-library-series-publishing-ce24bb673275",
   "author": {
-    "name" : "Raúl Gónzalez Acosta",
-    "email" : "gonzalezraul690@gmail.com"
+    "name": "Raúl Gónzalez Acosta",
+    "email": "gonzalezraul690@gmail.com"
   },
   "scripts": {
     "ng": "ng",
@@ -17,15 +22,18 @@
     "build_app": "ng build ng-paginaion",
     "serve_app": "ng serve ng-paginaion",
     "npm_pack": "cd dist/ng-rga-paginaion && npm pack",
-    "package": "npm run build_lib && npm run npm_pack"
+    "package": "npm run build_lib && npm run npm_pack",
+    "publish_package": "npm publish ./dist/ng-rga-paginaion/ng-rga-paginaion-0.0.1.tgz"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~7.1.0",
+    "@angular/animations": "^7.1.4",
+    "@angular/cdk": "^7.3.2",
     "@angular/common": "~7.1.0",
     "@angular/compiler": "~7.1.0",
     "@angular/core": "~7.1.0",
     "@angular/forms": "~7.1.0",
+    "@angular/material": "^7.3.2",
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",

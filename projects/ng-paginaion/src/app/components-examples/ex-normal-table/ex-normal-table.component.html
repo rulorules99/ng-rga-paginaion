@@ -1,0 +1,31 @@
+<div style="width: 400px;">
+  <label>Normal Html table (whit 3 seconds to delay)</label>
+  <lb-rga-table-searchbar (inputKeyUp)="filterTableData($event)"> </lb-rga-table-searchbar>
+
+  <!-- data table -->
+  <table>
+    <tr>
+      <th (click)="onSortData('id')"> <mat-icon [svgIcon]="getSortIcon('id')"></mat-icon>Id</th>
+      <th (click)="onSortData('avatar')"> <mat-icon [svgIcon]="getSortIcon('avatar')"></mat-icon>Avatar</th>
+      <th (click)="onSortData('first_name')" > <mat-icon [svgIcon]="getSortIcon('first_name')"></mat-icon>First name</th>
+      <th (click)="onSortData('last_name')" > <mat-icon [svgIcon]="getSortIcon('last_name')"></mat-icon> Last name</th>
+    </tr>
+    <tr *ngFor="let row of data">
+      <td>{{row.id}}</td>
+      <td> <img [src]="row.avatar" alt="Avatar" class="avatar"> </td>
+      <td>{{row.first_name}}</td>
+      <td>{{row.last_name}}</td>
+    </tr>
+  </table>
+
+  <!-- table pagination -->
+  <lb-rga-table-pagination
+          [meta]="meta"
+          (nextPage)="nextPage()"
+          (prevPage)="prevPage()"
+          (lastPage)="lastPage()"
+          (firstPage)="firstPage()"
+          (goToPage)="goToPage($event)"
+          *ngIf="meta.totalPages > 1">
+  </lb-rga-table-pagination>
+</div>

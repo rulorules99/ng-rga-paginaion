@@ -1,0 +1,13 @@
+<footer class="Pagination pt-2" >
+  <p class="Pagination-label">{{meta.total}} items</p>
+  <button (click)="firstPage.emit()" [disabled]="disableWhenFirst()"> << </button>
+  <button (click)="prevPage.emit()" [disabled]="disableWhenFirst()"> < </button>
+
+  <div class="mat-square-input">
+    <input type="text" [(ngModel)]="meta.currentPage" #inpunt (keyup)="goToPage.emit(inpunt.value)">
+  </div>
+
+  <p class="Pagination-label">of {{meta.totalPages}}</p>
+  <button (click)="nextPage.emit()" [disabled]="disableWhenLast()"> > </button>
+  <button (click)="lastPage.emit()" [disabled]="disableWhenLast()"> >> </button>
+</footer>
