@@ -119,6 +119,7 @@ Finally in our component we have te next:
 
 ```javascript
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Pagination, RgaMeta } from 'ng-rga-paginaion';
 
 @Component({
@@ -127,7 +128,7 @@ import { Pagination, RgaMeta } from 'ng-rga-paginaion';
 })
 export class Example  extends Pagination implements OnInit {
   public data: any[] = [];
-  constructor() { super('customGet'); }
+  constructor(private http: HttpClient) { super(); }
 
   ngOnInit() {
     this.get(this.buildFilters());

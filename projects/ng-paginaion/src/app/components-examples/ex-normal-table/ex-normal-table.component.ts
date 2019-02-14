@@ -1,6 +1,6 @@
 import { Service } from '../../service';
-import { Component, OnInit } from '@angular/core';
-import { Pagination, RgaMeta } from 'ng-rga-paginaion';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Pagination, RgaMeta, TablePaginationComponent, TableSearchbarComponent} from 'ng-rga-paginaion';
 import { BodyResponse, Data } from '../../body-response';
 
 @Component({
@@ -10,6 +10,8 @@ import { BodyResponse, Data } from '../../body-response';
 })
 export class ExNormalTableComponent  extends Pagination implements OnInit {
   public data: Data[] = [];
+  @ViewChild(TableSearchbarComponent) search: TableSearchbarComponent;
+  @ViewChild(TablePaginationComponent) paginate: TablePaginationComponent;
   constructor(private service: Service) { super('customGet'); }
 
   public ngOnInit(): void {

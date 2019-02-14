@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'lb-rga-table-searchbar',
@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class TableSearchbarComponent implements OnInit {
   value = '';
   @Output() inputKeyUp = new EventEmitter<string>();
-
+  @Input() template;
   constructor() { }
   ngOnInit() {}
 

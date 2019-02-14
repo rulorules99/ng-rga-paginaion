@@ -5,6 +5,8 @@ import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {NgModule} from '@angular/core';
+import {MatIconRegistry} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -88,7 +90,13 @@ import {
     ScrollingModule,
   ]
 })
-export class DemoMaterialModule {}
+export class DemoMaterialModule {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'thumbs-up',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/examples/thumbup-icon.svg'));
+  }
+}
 
 
 /**  Copyright 2018 Google Inc. All Rights Reserved.

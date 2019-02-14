@@ -7,7 +7,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./table-pagination.component.css']
 })
 export class TablePaginationComponent {
+
   @Input() meta: RgaMeta;
+  @Input() template;
   @Output() nextPage: EventEmitter<void> = new EventEmitter<void>();
   @Output() prevPage: EventEmitter<void> = new EventEmitter<void>();
   @Output() lastPage: EventEmitter<void> = new EventEmitter<void>();

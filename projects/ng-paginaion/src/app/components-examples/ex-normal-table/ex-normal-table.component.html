@@ -1,6 +1,27 @@
-<div style="width: 400px;">
-  <label>Normal Html table (whit 3 seconds to delay)</label>
-  <lb-rga-table-searchbar (inputKeyUp)="filterTableData($event)"> </lb-rga-table-searchbar>
+<div style="width: 600px;">
+  <label>Normal Html table and custom html search and paginate (whit 3 seconds to delay)</label>
+  <lb-rga-table-searchbar (inputKeyUp)="filterTableData($event)" [template]="searchTemplate"> </lb-rga-table-searchbar>
+
+  <ng-template #searchTemplate>
+    <div class="CatalogSearchbar">
+      <mat-form-field class="mat-square-input mr-2">
+        <input matInput
+               autocomplete="off"
+               type="text"
+               [(ngModel)]="search.value"
+               (keyup)="search.onKeyUp($event)">
+        <mat-icon *ngIf="search.value.length === 0"> search</mat-icon>
+        <button class="CatalogSearchbar-cleanButton"
+                mat-button
+                disableRipple
+                (click)="search.clear()"
+                *ngIf="search.value.length > 0">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <button class="CatalogSearchBar-button" mat-raised-button color="primary" (click)="search.search()"> Search </button>
+    </div>
+  </ng-template>
 
   <!-- data table -->
   <table>
@@ -20,12 +41,38 @@
 
   <!-- table pagination -->
   <lb-rga-table-pagination
+          [template]="paginateTemplate"
           [meta]="meta"
           (nextPage)="nextPage()"
           (prevPage)="prevPage()"
           (lastPage)="lastPage()"
           (firstPage)="firstPage()"
-          (goToPage)="goToPage($event)"
-          *ngIf="meta.totalPages > 1">
+          (goToPage)="goToPage($event)">
   </lb-rga-table-pagination>
 </div>
+
+<ng-template #paginateTemplate>
+  <footer class="Pagination pt-2" >
+    <p class="Pagination-label">{{paginate.meta?.total}} items</p>
+
+    <button mat-button (click)="paginate.firstPage.emit()"><mat-icon>fast_rewind</mat-icon></button>
+    <button mat-button (click)="paginate.prevPage.emit()" [disabled]="paginate.disableWhenFirst()">
+      <mat-icon>skip_previous</mat-icon>
+    </button>
+    <mat-form-field class="mat-square-input">
+      <input matInput type="text"
+             [(ngModel)]="paginate.meta.currentPage"
+             #inpunt
+             (keyup)="paginate.goToPage.emit(inpunt.value)">
+    </mat-form-field>
+
+    <p class="Pagination-label">of {{paginate.meta.totalPages}}</p>
+
+    <button mat-button (click)="paginate.nextPage.emit()" [disabled]="paginate.disableWhenLast()">
+      <mat-icon>skip_next</mat-icon>
+    </button>
+    <button mat-button (click)="paginate.lastPage.emit()" [disabled]="paginate.disableWhenLast()">
+      <mat-icon>fast_forward</mat-icon>
+    </button>
+  </footer>
+</ng-template>

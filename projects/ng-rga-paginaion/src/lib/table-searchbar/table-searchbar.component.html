@@ -1,8 +1,12 @@
-<div class="CatalogSearchbar">
-  <div class="mat-square-input mr-2">
-    <input autocomplete="off" type="text" [(ngModel)]="value" (keyup)="onKeyUp($event)">
-    <div class="CatalogSearchbar-icon" *ngIf="value.length === 0"> 0 </div>
-    <button class="CatalogSearchbar-cleanButton" (click)="clear()" *ngIf="value.length > 0"> x </button>
+<div *ngIf="!template">
+  <div class="CatalogSearchbar">
+    <div class="mat-square-input mr-2">
+      <input autocomplete="off" type="text" [(ngModel)]="value" (keyup)="onKeyUp($event)">
+      <div class="CatalogSearchbar-icon" *ngIf="value.length === 0"> 0 </div>
+      <button class="CatalogSearchbar-cleanButton" (click)="clear()" *ngIf="value.length > 0"> x </button>
+    </div>
+    <button class="CatalogSearchBar-button" (click)="search()"> Search </button>
   </div>
-  <button class="CatalogSearchBar-button" (click)="search()"> Search </button>
 </div>
+
+<ng-container *ngIf="template" [ngTemplateOutlet]="template"></ng-container>
