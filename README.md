@@ -15,7 +15,7 @@ npm i ng-rga-paginaion --save
 
 ### Usage
 
-In[*app.module.ts*](https://gthub.com/rulorules99/ng-rga-paginaion/blob/master/projects/ng-paginaion/src/app/app.module.ts): add
+In [*app.module.ts*](https://github.com/rulorules99/ng-rga-paginaion/blob/master/projects/ng-paginaion/src/app/app.module.ts): add
 
 Import the module:
 ```javascript
@@ -179,3 +179,127 @@ Finally in our html we have te next:
          *ngIf="meta.totalPages > 1">
 </lb-rga-table-pagination>
 ```
+
+## HTML replace component
+We can replace html component for own html style for `lb-rga-table-searchbar` and  `lb-rga-table-pagination`, for 
+each component follow examples bellow
+###Example component
+In Example component we must import `TableSearchbarComponent` and use a view child
+```javascript
+import { TableSearchbarComponent } from 'ng-rga-paginaion';
+```
+Add `ViewChild` to Example component:
+```javascript
+export class Example extends Pagination implements OnInit {
+  .......
+  @ViewChild(TableSearchbarComponent) search: TableSearchbarComponent;
+  .......
+}
+```
+###lb-rga-table-searchbar
+For add own html in component use next code bracers `[template]="templateRef"` inside of add the template ref, you must 
+put inside of `ng-template` your html
+```html
+<lb-rga-table-searchbar (inputKeyUp)="filterTableData($event)" [template]="searchTemplate"> </lb-rga-table-searchbar>
+<ng-template #searchTemplate>
+    <div class="CatalogSearchbar">
+      <mat-form-field class="mat-square-input mr-2">
+        <input matInput
+               autocomplete="off"
+               type="text"
+               [(ngModel)]="search.value"
+               (keyup)="search.onKeyUp($event)">
+        <mat-icon *ngIf="search.value.length === 0"> search</mat-icon>
+        <button class="CatalogSearchbar-cleanButton"
+                mat-button
+                disableRipple
+                (click)="search.clear()"
+                *ngIf="search.value.length > 0">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <button class="CatalogSearchBar-button" mat-raised-button color="primary" (click)="search.search()"> Search </button>
+    </div>
+</ng-template>
+```
+##### Component properties(P) and functions (F)
+
+P & F    | Description                | Params
+---------|----------------------------|------------
+onKeyUp  | Emit inputKeyUp function   | $event
+clear    | Clear model property value | 
+search   | In build                   | 
+value    | Model for input search     |
+template | Input for template ref     |
+
+###Example component
+In Example component we must import `TablePaginationComponent` and use a view child
+```javascript
+import { TablePaginationComponent } from 'ng-rga-paginaion';
+```
+Add `ViewChild` to Example component:
+```javascript
+export class Example extends Pagination implements OnInit {
+  .......
+  @ViewChild(TablePaginationComponent) paginate: TablePaginationComponent;
+  .......
+}
+```
+###lb-rga-table-pagination
+For add own html in component use next code bracers `[template]="templateRef"` inside of add the template ref, you must 
+put inside of `ng-template` your html
+```html
+  <lb-rga-table-pagination
+          [template]="paginateTemplate"
+          [meta]="meta"
+          (nextPage)="nextPage()"
+          (prevPage)="prevPage()"
+          (lastPage)="lastPage()"
+          (firstPage)="firstPage()"
+          (goToPage)="goToPage($event)">
+  </lb-rga-table-pagination>
+  
+  <ng-template #paginateTemplate>
+    <footer class="Pagination pt-2" >
+      <p class="Pagination-label">{{paginate.meta.total}} items</p>
+  
+      <button mat-button (click)="paginate.first()"><mat-icon>fast_rewind</mat-icon></button>
+      <button mat-button (click)="paginate.prev()" [disabled]="paginate.disableWhenFirst()">
+        <mat-icon>skip_previous</mat-icon>
+      </button>
+      <mat-form-field class="mat-square-input">
+        <input matInput type="text"
+               [(ngModel)]="paginate.meta.currentPage"
+               #inpunt
+               (keyup)="paginate.goTo(inpunt.value)">
+      </mat-form-field>
+  
+      <p class="Pagination-label">of {{paginate.meta.totalPages}}</p>
+  
+      <button mat-button (click)="paginate.next()" [disabled]="paginate.disableWhenLast()">
+        <mat-icon>skip_next</mat-icon>
+      </button>
+      <button mat-button (click)="paginate.last()" [disabled]="paginate.disableWhenLast()">
+        <mat-icon>fast_forward</mat-icon>
+      </button>
+    </footer>
+  </ng-template>
+```
+##### Component properties(P) and functions (F)
+
+P & F            | Description                      | Params     
+-----------------|----------------------------------|------------
+meta             | Property that contains meta data |
+template         | Input for template ref           | 
+nextPage         | Output emit function             | 
+prevPage         | Output emit function             |
+lastPage         | Output emit function             |
+firstPage        | Output emit function             |
+goToPage         | Output emit function             |
+disableWhenLast  | Show next page or last           |
+disableWhenFirst | Show prev page or first          |
+next             | Emmit next page                  |
+prev             | Emmit prev page                  |
+last             | Emmit last page                  |
+first            | Emmit first page                 |
+goTo             | Emmit goTo page                  | page

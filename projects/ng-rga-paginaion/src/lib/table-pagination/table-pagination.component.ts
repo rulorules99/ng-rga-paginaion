@@ -7,7 +7,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./table-pagination.component.css']
 })
 export class TablePaginationComponent {
-
   @Input() meta: RgaMeta;
   @Input() template;
   @Output() nextPage: EventEmitter<void> = new EventEmitter<void>();
@@ -32,5 +31,46 @@ export class TablePaginationComponent {
    */
   public disableWhenFirst(): boolean {
     return this.meta.currentPage === 1;
+  }
+
+  /**
+   * Emmit next page
+   * @return void
+   */
+  public next(): void {
+    this.nextPage.emit();
+  }
+
+  /**
+   * Emmit prev page
+   * @return void
+   */
+  public prev(): void {
+    this.prevPage.emit();
+  }
+
+  /**
+   * Emmit last page
+   * @return void
+   */
+  public last(): void {
+    this.lastPage.emit();
+  }
+
+  /**
+   * Emmit first page
+   * @return void
+   */
+  public first(): void {
+    this.firstPage.emit();
+  }
+
+  /**
+   * Emmit go to page
+   * @param page: number
+   * @return void
+   */
+  public goTo(page: number): void {
+    this.goToPage.emit(page);
   }
 }
