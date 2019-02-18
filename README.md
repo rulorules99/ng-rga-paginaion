@@ -182,9 +182,10 @@ Finally in our html we have te next:
 
 ## HTML replace component
 We can replace html component for own html style for `lb-rga-table-searchbar` and  `lb-rga-table-pagination`, for 
-each component follow examples bellow
-###Example component
-In Example component we must import `TableSearchbarComponent` and use a view child
+each component follow examples bellow.
+
+###lb-rga-table-searchbar and component
+In Example component we must import `TableSearchbarComponent` and use a view child.
 ```javascript
 import { TableSearchbarComponent } from 'ng-rga-paginaion';
 ```
@@ -196,9 +197,8 @@ export class Example extends Pagination implements OnInit {
   .......
 }
 ```
-###lb-rga-table-searchbar
 For add own html in component use next code bracers `[template]="templateRef"` inside of add the template ref, you must 
-put inside of `ng-template` your html
+put inside of `ng-template` your html.
 ```html
 <lb-rga-table-searchbar (inputKeyUp)="filterTableData($event)" [template]="searchTemplate"> </lb-rga-table-searchbar>
 <ng-template #searchTemplate>
@@ -222,7 +222,7 @@ put inside of `ng-template` your html
     </div>
 </ng-template>
 ```
-##### Component properties(P) and functions (F)
+#### Component properties(P) and functions (F)
 
 P & F    | Description                | Params
 ---------|----------------------------|------------
@@ -232,7 +232,7 @@ search   | In build                   |
 value    | Model for input search     |
 template | Input for template ref     |
 
-###Example component
+###lb-rga-table-pagination and component 
 In Example component we must import `TablePaginationComponent` and use a view child
 ```javascript
 import { TablePaginationComponent } from 'ng-rga-paginaion';
@@ -245,7 +245,6 @@ export class Example extends Pagination implements OnInit {
   .......
 }
 ```
-###lb-rga-table-pagination
 For add own html in component use next code bracers `[template]="templateRef"` inside of add the template ref, you must 
 put inside of `ng-template` your html
 ```html
