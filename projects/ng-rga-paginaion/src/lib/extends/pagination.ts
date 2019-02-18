@@ -18,9 +18,7 @@ export class Pagination {
     searchFields: '',
     searchJoin: 'and'
   };
-
   public responseIsComplete = false;
-
   constructor(getMethod = 'get') {
     this.getMethod = getMethod;
   }

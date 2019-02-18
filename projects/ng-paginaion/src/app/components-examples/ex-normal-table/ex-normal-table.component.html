@@ -1,5 +1,7 @@
 <div style="width: 600px;">
   <label>Normal Html table and custom html search and paginate (whit 3 seconds to delay)</label>
+
+  <!-- table search -->
   <lb-rga-table-searchbar (inputKeyUp)="filterTableData($event)" [template]="searchTemplate"> </lb-rga-table-searchbar>
 
   <ng-template #searchTemplate>
