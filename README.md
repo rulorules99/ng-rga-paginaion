@@ -184,7 +184,7 @@ Finally in our html we have te next:
 We can replace html component for own html style for `lb-rga-table-searchbar` and  `lb-rga-table-pagination`, for 
 each component follow examples bellow.
 
-###lb-rga-table-searchbar and component
+### lb-rga-table-searchbar and component
 In Example component we must import `TableSearchbarComponent` and use a view child.
 ```javascript
 import { TableSearchbarComponent } from 'ng-rga-paginaion';
@@ -232,7 +232,7 @@ search   | In build                   |
 value    | Model for input search     |
 template | Input for template ref     |
 
-###lb-rga-table-pagination and component 
+### lb-rga-table-pagination and component
 In Example component we must import `TablePaginationComponent` and use a view child
 ```javascript
 import { TablePaginationComponent } from 'ng-rga-paginaion';
