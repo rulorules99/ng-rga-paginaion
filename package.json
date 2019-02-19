@@ -20,6 +20,7 @@
     "e2e": "ng e2e",
     "start:dev": "webpack-dev-server",
     "build_lib": "ng build ng-rga-paginaion",
+    "build_lib:watch": "ng build ng-rga-paginaion --watch",
     "build_app": "ng build ng-paginaion",
     "serve_app": "ng serve ng-paginaion",
     "npm_pack": "cd dist/ng-rga-paginaion && npm pack",

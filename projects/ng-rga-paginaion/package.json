@@ -2,7 +2,7 @@
   "name": "ng-rga-paginaion",
   "version": "0.0.3",
   "license": "MIT",
-  "description": "A package for paguination with API integrations.",
+  "description": "A package for pagination with API integrations.",
   "keywords" :["Angular","Library"],
   "repository": {
     "type" : "git",
