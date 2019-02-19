@@ -10,4 +10,4 @@ before_script:
   - npm install -g @angular/cli
 script:
   - ng lint
-  - ng build --prod --base-href https://rulorules99.github.io/ng-rga-paginaion/
+  - ng build --base-href https://rulorules99.github.io/ng-rga-paginaion/
