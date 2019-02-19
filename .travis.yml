@@ -11,5 +11,13 @@ before_script:
 script:
   - ng lint
   - npm run build_lib
-  - npm run test-headless
+  #- npm run test-headless
   - ng build ng-paginaion --prod --base-href https://rulorules99.github.io/ng-rga-paginaion/
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/ng-paginaion
+  on:
+    branch: master
+#ad946ef9b395ddf50cbf61ca1675078de007f76b
