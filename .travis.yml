@@ -11,4 +11,4 @@ before_script:
 script:
   - ng lint
   - ng build ng-rga-paginaion
-  - ng build ng-paginaion --prod
+  - ng build ng-paginaion --prod --base-href https://rulorules99.github.io/ng-rga-paginaion/
