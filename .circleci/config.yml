@@ -100,5 +100,8 @@ workflows:
       #    requires:
       #      - build-lib
       - release
+        filters:
+          branches:
+            only: master
           #requires:
           #  - test-app
