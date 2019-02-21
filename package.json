@@ -1,6 +1,6 @@
 {
   "name": "ng-rga-paginaion",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
     "serve_app": "ng serve ng-paginaion",
     "npm_pack": "cd dist/ng-rga-paginaion && npm pack",
     "package": "npm run build_lib && npm run npm_pack",
-    "publish_package": "npm run package && npm publish ./dist/ng-rga-paginaion/ng-rga-paginaion-0.0.3.tgz"
+    "publish_package": "npm run package && npm publish ./dist/ng-rga-paginaion/ng-rga-paginaion-0.0.3.tgz",
+    "semantic-release": "semantic-release"
   },
   "private": true,
   "dependencies": {
@@ -70,6 +71,7 @@
     "tslint": "~5.11.0",
     "typescript": "~3.1.6",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "semantic-release": "^15.13.3"
   }
 }
