@@ -99,9 +99,9 @@ workflows:
       #- test-app:
       #    requires:
       #      - build-lib
-      - release
-        filters:
-          branches:
-            only: master
-          #requires:
-          #  - test-app
+      - release:
+          requires:
+            - build-lib
+          filters:
+            branches:
+              only: maste
