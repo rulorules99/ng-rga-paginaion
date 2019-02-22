@@ -104,4 +104,4 @@ workflows:
             - build-lib
           filters:
             branches:
-              only: maste
+              only: master
