@@ -1,5 +1,16 @@
 # NgRgaPaginaion
 
+<p align="left">
+  <a href="https://github.com/semantic-release/semantic-release">
+    <img alt="Travis" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
+  </a>
+</p>
+<p align="left">
+  <a href="https://www.npmjs.com/package/ng-rga-paginaion">
+    <span style="border: solid;">npm@lastes</span>  <span>v0.1.0</span>
+  </a>
+</p>
+
 A package in angular to integrate with API an example:
 [HERE](https://rulorules99.github.io/ng-rga-paginaion/)
  
