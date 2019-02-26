@@ -5,7 +5,7 @@ job_defaults: &job_defaults
     - image: circleci/node:latest
       environment:
           CHROME_BIN: "/usr/bin/google-chrome"
-  working_directory: ~/project/ng-rga-paginaion
+  working_directory: ~/project/repo
 
 cache_key: &cache_key ng-rga-paginaion-deps-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}
 dist_key: &dist_key ng-rga-paginaion-dist-{{ .Revision }}
