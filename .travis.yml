@@ -11,7 +11,7 @@ before_script:
 script:
   - ng lint
   - npm run build_lib
-  #- npm run test-headless
+  - npm run test-headless
   - ng build ng-paginaion --prod --base-href https://rulorules99.github.io/ng-rga-paginaion/
 deploy:
   provider: pages
