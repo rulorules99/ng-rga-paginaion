@@ -76,12 +76,27 @@ workflows:
   build-test-release:
     jobs:
       - install
+          filters:
+            branches:
+              only:
+                - master
+                - develop
       - lint:
           requires:
             - install
+          filters:
+            branches:
+              only:
+                - master
+                - develop
       - build-lib:
           requires:
             - lint
+          filters:
+            branches:
+              only:
+                - master
+                - develop
       #- test-lib:
       #    requires:
       #      - install
