@@ -1,6 +1,7 @@
 # NgRgaPaginaion
 
-A package in angular to integrate with API
+A package in angular to integrate with API an example:
+[HERE](https://rulorules99.github.io/ng-rga-paginaion/)
  
 ## Getting Started
 
